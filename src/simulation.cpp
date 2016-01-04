@@ -48,7 +48,7 @@ void update(vector<body>& bodies, double dt) {
     return;
 }
 
-vector<body> initialiseBodiesRandom() {
+vector<body> initialiseBodiesRandom(double gravity) {
     vector<body> bodies;
     long int seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::minstd_rand0 generator(seed);
@@ -57,21 +57,22 @@ vector<body> initialiseBodiesRandom() {
     for (int t = 0; t < COUNT; t++) {
         double x = static_cast <double> (generator()) / (RAND_MAX/RANGE);
         double y = static_cast <double> (generator()) / (RAND_MAX/RANGE);
-        bodies.push_back(*(new body(x, y, 1.0)));
+        bodies.push_back(*(new body(x, y, gravity)));
     }
     return bodies;
 }
 
-vector<body> initialiseBodiesGrid() {
+vector<body> initialiseBodiesGrid(double gravity) {
     vector<body> bodies;
     for (double x = 0.0; x < 100.0; x += 10.0) {
         for (double y = 0.0; y < 100.0; y += 10.0) {
-            bodies.push_back(*(new body(x, y, 1.0)));
+            bodies.push_back(*(new body(x, y, gravity)));
         }
     }
     return bodies;
 }
 
 vector<body> initialiseBodies() {
-    return initialiseBodiesRandom();
+    const double gravity = 10.0;
+    return initialiseBodiesRandom(gravity);
 }

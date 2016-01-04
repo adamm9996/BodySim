@@ -15,30 +15,6 @@ SDL_GLContext glContext;
 GLuint vbo, vao, ebo, tex, vertexShader, fragmentShader, shaderProgram;
 GLint uniSquareTrans, posAttrib, colAttrib, texAttrib;
 
-
-void drawCircle(float cx, float cy, float r, int num_segments)
-{
-    float theta = 2 * 3.1415926 / float(num_segments);
-    float c = cosf(theta);//precalculate the sine and cosine
-    float s = sinf(theta);
-    float t;
-
-    float x = r;//we start at angle = 0
-    float y = 0;
-
-    glBegin(GL_LINE_LOOP);
-    for(int ii = 0; ii < num_segments; ii++)
-    {
-        glVertex2f(x + cx, y + cy);//output vertex
-
-        //apply the rotation matrix
-        t = x;
-        x = c * x - s * y;
-        y = s * t + c * y;
-    }
-    glEnd();
-}
-
 GLfloat squareVertices[] = {
 //	 x		y	  r		g	  b     tX   tY
     -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
@@ -58,7 +34,6 @@ void drawSquare(double x, double y, float size) {
 }
 void drawBodies(vector<body> bodies) {
     for (auto& b : bodies) {
-        //drawCircle((float)b.getPos().x, (float)b.getPos().y, 0.1, 10);
         drawSquare(b.getPos().x, b.getPos().y, 0.01);
     }
 }

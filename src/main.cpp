@@ -1,6 +1,5 @@
 #include <iostream>
 #include <thread>
-#include <string>
 #include "display.h"
 #include "simulation.h"
 #include "controller.h"
