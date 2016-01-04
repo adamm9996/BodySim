@@ -5,6 +5,7 @@
 #ifndef BODYSIM_BODY_H
 #define BODYSIM_BODY_H
 
+#include <cmath>
 typedef struct {
     double x, y;
 } vec2;
@@ -16,6 +17,7 @@ public:
     vec2 getPos() const, getAcc() const, getVel() const;
     void setAcc(vec2), setPos(vec2), setVel(vec2);
     double getMass() const;
+    double distance(body) const;
 private:
     vec2 pos, acc, vel;
     double mass;

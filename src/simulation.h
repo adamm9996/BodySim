@@ -8,7 +8,7 @@
 #include <vector>
 #include "body.h"
 
-std::vector<body> update(std::vector<body>, double);
+void update(std::vector<body>&, double);
 std::vector<body> initialiseBodies();
 
 #endif //BODYSIM_SIMULATION_H

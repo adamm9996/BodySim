@@ -14,6 +14,11 @@ body::body(double x, double y, double mass) {
     this->mass = mass;
 }
 
+double body::distance(body other) const {
+    return std::sqrt(std::pow((this->pos.x - other.getPos().x), 2.0) +
+                             std::pow((this->pos.y - other.getPos().y), 2.0));
+}
+
 void body::setAcc(vec2 acc) {
     this->acc = acc;
 }
